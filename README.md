@@ -1,6 +1,6 @@
 # Testes com Selenium WebDriver Java
 
-Projeto para de estudos em testes automatizados 
+Projeto de estudos em testes automatizados 
 
 ### Frameworks/ Versões :
     
