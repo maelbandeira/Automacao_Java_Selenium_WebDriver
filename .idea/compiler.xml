@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="webdriverJava" />
+        <module name="Automacao_Java_Selenium_WebDriver" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Automacao_Java_Selenium_WebDriver" options="-Werror" />
       <module name="webdriverJava" options="-Werror" />
     </option>
   </component>

@@ -1,21 +1,11 @@
-# Testes Web com Selenium em Java
+# Automação de Testes Web com Selenium WebDriver em Java
 
 Este repositório faz parte dos meus estudos em automação de testes web
 
-O Selenium WebDriver é uma ferramenta popular e poderosa para automação de testes de software. Ele permite interagir com elementos da interface de um aplicativo da web, simulando as ações de um usuário real. Ao usar o Selenium WebDriver em conjunto com Java, é possível criar testes automatizados robustos e eficientes.
+Selenium WebDriver: É uma ferramenta de automação de testes para aplicações web. Ele permite a interação com elementos de uma página web por meio de scripts em várias linguagens de programação.
 
-Um projeto típico de testes automatizados em Java usando o Selenium WebDriver envolve as seguintes etapas:
+DSL (Domain-Specific Language): É uma linguagem de programação específica de um domínio. No contexto do Selenium WebDriver, uma DSL pode ser criada para simplificar a escrita de testes automatizados, oferecendo uma camada de abstração que facilita o entendimento e a manutenção dos testes.
 
-Configuração do ambiente: É necessário configurar o ambiente de desenvolvimento para trabalhar com Java e Selenium WebDriver. Isso envolve a instalação do JDK (Java Development Kit), configuração do classpath, e a inclusão das dependências do Selenium WebDriver no projeto.
+Page Objects: É um padrão de projeto utilizado para organizar e encapsular as interações com elementos de uma página web em classes dedicadas. Cada página ou componente da aplicação é representado por uma classe de Page Object, que contém métodos para interagir com os elementos da página.
 
-Criação do projeto: Você pode criar um projeto Maven ou Gradle para gerenciar as dependências e facilitar a configuração do projeto. O Maven, por exemplo, permite gerenciar as dependências do Selenium WebDriver e outras bibliotecas necessárias.
-
-Criação de classes de teste: Em seguida, você deve criar classes de teste para definir os cenários de teste e as ações que serão realizadas. As classes de teste devem usar a anotação @Test para indicar que são métodos de teste.
-
-Configuração do WebDriver: É necessário configurar o WebDriver para que ele possa se comunicar com o navegador da web. Isso envolve a criação de uma instância do WebDriver e a definição das opções do navegador, como qual navegador usar e o local do driver correspondente.
-
-Escrita dos testes: Agora, você pode começar a escrever os testes propriamente ditos. Use os métodos do WebDriver para localizar elementos na página, interagir com eles (cliques, preenchimento de campos, seleção de opções, etc.) e realizar verificações (por exemplo, verificar se um elemento está presente ou se contém um texto específico).
-
-Execução dos testes: Com os testes escritos, você pode executá-los usando uma ferramenta de execução de testes, como o JUnit ou o TestNG. Essas ferramentas executam os testes e fornecem informações sobre o status de cada teste, como sucesso, falha ou erro.
-
-Relatórios de teste: É possível gerar relatórios de teste para documentar os resultados dos testes. O Selenium WebDriver em conjunto com ferramentas como o TestNG ou o ExtentReports permite gerar relatórios detalhados e personalizáveis.
+Os Page Objects ajudam a separar a lógica dos testes automatizados da estrutura da página, tornando o código mais modular, reutilizável e fácil de manter. Eles encapsulam detalhes de implementação, como seletores CSS ou XPath, permitindo que os testes se concentrem apenas nas ações relevantes para a página.
