@@ -1,6 +1,6 @@
-package br.com.testando.pageObjects;
+package br.com.pages_objects;
 
-import br.com.testando.dsl.DSL;
+import br.com.dsl.DSL;
 import org.openqa.selenium.WebDriver;
 
 public class CampoTreinamentoPO {
@@ -79,4 +79,5 @@ public class CampoTreinamentoPO {
     public String obterEsportesCadastro(){
         return dsl.obterTexto("descEsportes");
     }
+
 }

@@ -11,9 +11,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.chromium.ChromiumDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,17 +27,17 @@ public class TesteCampoTreinamento {
         driver = new ChromeDriver();
 
         driver.manage().window().maximize();
-        driver.get("file:///C:/ambiente/workspaces/Testes_Selenium_WebDriver/src/test/resources/componentes.html");
-//        dsl = new DSL(driver);
+        driver.get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
+        dsl = new DSL(driver);
     }
-    @Test
-    public void testeFirefox(){
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-        driver.get("file:///C:/ambiente/workspaces/Testes_Selenium_WebDriver/src/test/resources/componentes.html");
-//        dsl = new DSL(driver);
-    }
+//    @Test
+//    public void testeFirefox(){
+//        WebDriverManager.firefoxdriver().setup();
+//        driver = new FirefoxDriver();
+//        driver.manage().window().maximize();
+//        driver.get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
+////        dsl = new DSL(driver);
+//    }
 
 
     @Test
@@ -51,16 +48,16 @@ public class TesteCampoTreinamento {
 
     @Test
     public void testTextFieldDuplo(){
-        dsl.escrever("elementosForm:nome", "Wagner");
-        Assert.assertEquals("Wagner", dsl.obterValorCampo("elementosForm:nome"));
-        dsl.escrever("elementosForm:nome", "Aquino");
-        Assert.assertEquals("Aquino", dsl.obterValorCampo("elementosForm:nome"));
+        dsl.escrever("elementosForm:nome", "Abmael");
+        Assert.assertEquals("Abmael", dsl.obterValorCampo("elementosForm:nome"));
+        dsl.escrever("elementosForm:sobrenome", "Santana");
+        Assert.assertEquals("Santana", dsl.obterValorCampo("elementosForm:sobrenome"));
     }
 
     @Test
     public void deveIntegarirComTextArea(){
-        dsl.escrever("elementosForm:sugestoes", "teste\n\naasldjdlks\nUltima linha");
-        Assert.assertEquals("teste\n\naasldjdlks\nUltima linha", dsl.obterValorCampo("elementosForm:sugestoes"));
+        dsl.escrever("elementosForm:sugestoes", "testando\n\nfdfgndlks\n\nUltima linha");
+        Assert.assertEquals("testando\n\nfdfgndlks\n\nUltima linha", dsl.obterValorCampo("elementosForm:sugestoes"));
     }
 
     @Test
@@ -135,8 +132,6 @@ public class TesteCampoTreinamento {
         WebElement element = driver.findElement(By.id("elementosForm:nome"));
         js.executeScript("arguments[0].style.border = arguments[1]", element, "solid 4px blue");
     }
-
-
 
     @After
     public void finaliza(){

@@ -1,14 +1,19 @@
 package br.com.dsl;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DSL {
 
     private WebDriver driver;
+    private int timeoutSeconds;
+    private int pollingSeconds;
 
     public DSL(WebDriver driver) {
         this.driver = driver;
@@ -22,6 +27,7 @@ public class DSL {
     }
 
     public void escrever(String id_campo, String texto){
+        waitForPageLoaded();
         escrever(By.id(id_campo), texto);
     }
 
@@ -171,5 +177,13 @@ public class DSL {
     public Object executarJS(String cmd, Object... param) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return js.executeScript(cmd, param);
+    }
+
+
+    public void waitForPageLoaded() {
+        Wait<WebDriver> wait = (new FluentWait(this.driver)).withTimeout(Duration.ofSeconds((long)this.timeoutSeconds)).pollingEvery(Duration.ofSeconds((long)this.pollingSeconds));
+        wait.until((driver) -> {
+            return ((JavascriptExecutor)driver).executeScript("return document.readyState", new Object[0]).toString().equals("complete");
+        });
     }
 }
