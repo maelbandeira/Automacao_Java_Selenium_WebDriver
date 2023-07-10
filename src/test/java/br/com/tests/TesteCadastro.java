@@ -1,7 +1,6 @@
 package br.com.tests;
 
-import br.com.dsl.DSL;
-import br.com.pages_objects.CampoTreinamentoPO;
+import br.com.po.CampoTreinamentoPO;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;

@@ -1,4 +1,4 @@
-package br.com.pages_objects;
+package br.com.po;
 
 import br.com.dsl.DSL;
 import org.openqa.selenium.WebDriver;
