@@ -1,6 +1,7 @@
 package br.com.tests;
 
-import br.com.dsl.DSL;
+import br.com.core.DSL;
+import br.com.core.DriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
@@ -10,20 +11,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TesteFramesEJanelas {
+import static br.com.core.DriverFactory.*;
 
-    private WebDriver driver;
+public class TesteFramesEJanelas {
 
     private DSL dsl;
 
     @Before
     public void inicializa(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-
-        driver.manage().window().maximize();
-        driver.get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
-        dsl = new DSL(driver);
+        getDriver().get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
+        dsl = new DSL();
     }
 
     @Test
@@ -42,7 +39,7 @@ public class TesteFramesEJanelas {
         dsl.clicarBotao("buttonPopUpEasy");
         dsl.trocarJanela("Popup");
         dsl.escrever(By.tagName("textarea"), "Deu certo?");
-        driver.close();
+        getDriver().close();
         dsl.trocarJanela("");
         dsl.escrever(By.tagName("textarea"), "e agora?");
     }
@@ -50,17 +47,17 @@ public class TesteFramesEJanelas {
     @Test
     public void deveInteragirComJanelasSemTitulo(){
         dsl.clicarBotao("buttonPopUpHard");
-        System.out.println(driver.getWindowHandle());
-        System.out.println(driver.getWindowHandles());
-        dsl.trocarJanela((String) driver.getWindowHandles().toArray()[1]);
+        System.out.println(getDriver().getWindowHandle());
+        System.out.println(getDriver().getWindowHandles());
+        dsl.trocarJanela((String) getDriver().getWindowHandles().toArray()[1]);
         dsl.escrever(By.tagName("textarea"), "Deu certo?");
-        dsl.trocarJanela((String) driver.getWindowHandles().toArray()[0]);
+        dsl.trocarJanela((String) getDriver().getWindowHandles().toArray()[0]);
         dsl.escrever(By.tagName("textarea"), "e agora?");
     }
 
 
     @After
     public void finaliza(){
-//		driver.quit();
+//        killDriver();
     }
 }

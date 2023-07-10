@@ -1,35 +1,34 @@
 package br.com.tests;
 
-import br.com.dsl.DSL;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import br.com.core.DSL;
+import br.com.core.DriverFactory;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static br.com.core.DriverFactory.*;
+
 public class TesteCampoTreinamento {
 
-    private WebDriver driver;
 
     private DSL dsl;
 
-    @Before
-    public void inicializa(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-
-        driver.manage().window().maximize();
-        driver.get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
-        dsl = new DSL(driver);
-    }
+//    @Before
+//    public void inicializa(){
+//        WebDriverManager.chromedriver().setup();
+//        driver = new ChromeDriver();
+//
+//        driver.manage().window().maximize();
+//        driver.get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
+//        dsl = new DSL(driver);
+//    }
 //    @Test
 //    public void testeFirefox(){
 //        WebDriverManager.firefoxdriver().setup();
@@ -39,7 +38,11 @@ public class TesteCampoTreinamento {
 ////        dsl = new DSL(driver);
 //    }
 
-
+    @Before
+    public void inicializa(){
+        getDriver().get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
+        dsl = new DSL();
+    }
     @Test
     public void testeTextField(){
         dsl.escrever("elementosForm:nome", "Teste de escrita");
@@ -124,17 +127,17 @@ public class TesteCampoTreinamento {
 
     @Test
     public void testJavascript(){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
 //		js.executeScript("alert('Testando js via selenium')");
         js.executeScript("document.getElementById('elementosForm:nome').value = 'Escrito via js'");
         js.executeScript("document.getElementById('elementosForm:sobrenome').type = 'radio'");
 
-        WebElement element = driver.findElement(By.id("elementosForm:nome"));
+        WebElement element = getDriver().findElement(By.id("elementosForm:nome"));
         js.executeScript("arguments[0].style.border = arguments[1]", element, "solid 4px blue");
     }
 
     @After
     public void finaliza(){
-//		driver.quit();
+        killDriver();
     }
 }

@@ -1,30 +1,23 @@
 package br.com.tests;
 
+import br.com.core.DriverFactory;
 import br.com.po.CampoTreinamentoPO;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+import static br.com.core.DriverFactory.*;
+import static br.com.core.DriverFactory.getDriver;
 
 public class TesteCadastro {
 
-    private WebDriver driver;
-
-
     private CampoTreinamentoPO page;
-
 
     @Before
     public void inicializa(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-
-        driver.manage().window().maximize();
-        driver.get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
-        page = new CampoTreinamentoPO(driver);
+        getDriver().get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
+        page = new CampoTreinamentoPO();
     }
 
 
@@ -50,7 +43,7 @@ public class TesteCadastro {
 
     @After
     public void finaliza(){
-//		driver.quit();
+        killDriver();
     }
 
 }

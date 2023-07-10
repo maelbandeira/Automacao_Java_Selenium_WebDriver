@@ -1,14 +1,13 @@
 package br.com.po;
 
-import br.com.dsl.DSL;
-import org.openqa.selenium.WebDriver;
+import br.com.core.DSL;
 
 public class CampoTreinamentoPO {
 
     private DSL dsl;
 
-    public CampoTreinamentoPO(WebDriver driver) {
-        dsl = new DSL(driver);
+    public CampoTreinamentoPO() {
+        dsl = new DSL();
     }
 
     public void setNome(String nome) {
