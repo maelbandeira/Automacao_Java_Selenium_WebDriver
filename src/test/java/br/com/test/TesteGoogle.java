@@ -1,4 +1,4 @@
-package br.com.tests;
+package br.com.test;
 
 import org.junit.After;
 import org.junit.Assert;

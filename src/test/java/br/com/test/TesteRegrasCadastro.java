@@ -1,17 +1,13 @@
-package br.com.tests;
+package br.com.test;
 
+import br.com.core.BaseTest;
 import br.com.core.DSL;
-import br.com.core.DriverFactory;
-import br.com.po.CampoTreinamentoPO;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
+import br.com.page.CampoTreinamentoPO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,7 +17,7 @@ import static br.com.core.DriverFactory.*;
 
 
 @RunWith(Parameterized.class)
-public class TesteRegrasCadastro {
+public class TesteRegrasCadastro extends BaseTest {
 
     private DSL dsl;
     private CampoTreinamentoPO page;
@@ -77,8 +73,5 @@ public class TesteRegrasCadastro {
         Assert.assertEquals(msg, dsl.alertaObterTextoEAceita());
     }
 
-    @After
-    public void finaliza(){
-        killDriver();
-    }
+
 }

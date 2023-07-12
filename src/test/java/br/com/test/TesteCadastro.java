@@ -1,7 +1,6 @@
-package br.com.tests;
+package br.com.test;
 
-import br.com.core.DriverFactory;
-import br.com.po.CampoTreinamentoPO;
+import br.com.page.CampoTreinamentoPO;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

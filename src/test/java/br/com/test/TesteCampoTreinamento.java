@@ -1,7 +1,8 @@
-package br.com.tests;
+package br.com.test;
 
+import br.com.core.BaseTest;
 import br.com.core.DSL;
-import br.com.core.DriverFactory;
+import br.com.core.JavascriptExecute;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,8 +16,9 @@ import java.util.List;
 
 import static br.com.core.DriverFactory.*;
 
-public class TesteCampoTreinamento {
+public class TesteCampoTreinamento extends BaseTest {
 
+    JavascriptExecute js;
 
     private DSL dsl;
 
@@ -42,6 +44,7 @@ public class TesteCampoTreinamento {
     public void inicializa(){
         getDriver().get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
         dsl = new DSL();
+        js = new JavascriptExecute();
     }
     @Test
     public void testeTextField(){
@@ -105,6 +108,7 @@ public class TesteCampoTreinamento {
     @Test
     public void deveInteragirComBotoes(){
         dsl.clicarBotao("buttonSimple");
+
         Assert.assertEquals("Obrigado!", dsl.obterValueElemento("buttonSimple"));
     }
 
@@ -119,6 +123,7 @@ public class TesteCampoTreinamento {
     public void deveBuscarTextosNaPagina(){
 //		Assert.assertTrue(driver.findElement(By.tagName("body"))
 //				.getText().contains("Campo de Treinamento"));
+        js.jsExecuteBordaElementoXpath("//h3[contains(.,'Campo de Treinamento')]");
         Assert.assertEquals("Campo de Treinamento", dsl.obterTexto(By.tagName("h3")));
 
         Assert.assertEquals("Cuidado onde clica, muitas armadilhas...",
@@ -127,17 +132,17 @@ public class TesteCampoTreinamento {
 
     @Test
     public void testJavascript(){
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
 //		js.executeScript("alert('Testando js via selenium')");
-        js.executeScript("document.getElementById('elementosForm:nome').value = 'Escrito via js'");
-        js.executeScript("document.getElementById('elementosForm:sobrenome').type = 'radio'");
 
-        WebElement element = getDriver().findElement(By.id("elementosForm:nome"));
-        js.executeScript("arguments[0].style.border = arguments[1]", element, "solid 4px blue");
+//        js.executeScript("document.getElementById('elementosForm:nome').value = 'Escrito via js'");
+//        js.executeScript("document.getElementById('elementosForm:sobrenome').type = 'radio'");
+        js.escreverViaJS("elementosForm:nome", "Abmael");
+        js.jsExecuteBordaElemento("elementosForm:nome");
+
     }
 
-    @After
-    public void finaliza(){
-        killDriver();
-    }
+//    @After
+//    public void finaliza(){
+////        killDriver();
+//    }
 }

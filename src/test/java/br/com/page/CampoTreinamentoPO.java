@@ -1,14 +1,9 @@
-package br.com.po;
+package br.com.page;
 
-import br.com.core.DSL;
+import br.com.core.BasePage;
 
-public class CampoTreinamentoPO {
+public class CampoTreinamentoPO extends BasePage {
 
-    private DSL dsl;
-
-    public CampoTreinamentoPO() {
-        dsl = new DSL();
-    }
 
     public void setNome(String nome) {
         dsl.escrever("elementosForm:nome", nome);

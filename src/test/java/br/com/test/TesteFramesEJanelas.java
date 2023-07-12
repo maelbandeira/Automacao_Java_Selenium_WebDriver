@@ -1,15 +1,11 @@
-package br.com.tests;
+package br.com.test;
 
 import br.com.core.DSL;
-import br.com.core.DriverFactory;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import static br.com.core.DriverFactory.*;
 
