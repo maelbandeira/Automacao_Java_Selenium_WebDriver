@@ -2,6 +2,7 @@ package br.com.core;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.OutputType;
@@ -17,6 +18,16 @@ public class BaseTest {
 
     @Rule
     public TestName name = new TestName();
+
+//    @Before
+//    public void inicializa(){
+//        page.acessarTelaInicial();
+//
+//        page.setEmail("Abmael");
+//        page.setSenha("123456");
+//        page.entrar();
+//    }
+
 
     @After
     public void finaliza() throws IOException {

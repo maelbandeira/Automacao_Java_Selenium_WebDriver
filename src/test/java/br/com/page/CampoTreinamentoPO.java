@@ -6,72 +6,72 @@ public class CampoTreinamentoPO extends BasePage {
 
 
     public void setNome(String nome) {
-        dsl.escrever("elementosForm:nome", nome);
+        escrever("elementosForm:nome", nome);
     }
 
     public void setSobrenome(String sobrenome) {
-        dsl.escrever("elementosForm:sobrenome", sobrenome);
+        escrever("elementosForm:sobrenome", sobrenome);
     }
 
     public void setSexoMasculino(){
-        dsl.clicarRadio("elementosForm:sexo:0");
+        clicarRadio("elementosForm:sexo:0");
     }
 
     public void setSexoFeminino(){
-        dsl.clicarRadio("elementosForm:sexo:1");
+        clicarRadio("elementosForm:sexo:1");
     }
 
     public void setComidaCarne(){
-        dsl.clicarRadio("elementosForm:comidaFavorita:0");
+        clicarRadio("elementosForm:comidaFavorita:0");
     }
 
     public void setComidaPizza(){
-        dsl.clicarRadio("elementosForm:comidaFavorita:2");
+        clicarRadio("elementosForm:comidaFavorita:2");
     }
 
     public void setComidaVegetariano(){
-        dsl.clicarRadio("elementosForm:comidaFavorita:3");
+        clicarRadio("elementosForm:comidaFavorita:3");
     }
 
     public void setEscolaridade(String valor) {
-        dsl.selecionarCombo("elementosForm:escolaridade", valor);
+        selecionarCombo("elementosForm:escolaridade", valor);
     }
 
     public void setEsporte(String... valores) {
         for(String valor: valores)
-            dsl.selecionarCombo("elementosForm:esportes", valor);
+            selecionarCombo("elementosForm:esportes", valor);
     }
 
     public void cadastrar(){
-        dsl.clicarBotao("elementosForm:cadastrar");
+        clicarBotao("elementosForm:cadastrar");
     }
 
     public String obterResultadoCadastro(){
-        return dsl.obterTexto("resultado");
+        return obterTexto("resultado");
     }
 
     public String obterNomeCadastro(){
-        return dsl.obterTexto("descNome");
+        return obterTexto("descNome");
     }
 
     public String obterSobrenomeCadastro(){
-        return dsl.obterTexto("descSobrenome");
+        return obterTexto("descSobrenome");
     }
 
     public String obterSexoCadastro(){
-        return dsl.obterTexto("descSexo");
+        return obterTexto("descSexo");
     }
 
     public String obterComidaCadastro(){
-        return dsl.obterTexto("descComida");
+        return obterTexto("descComida");
     }
 
     public String obterEscolaridadeCadastro(){
-        return dsl.obterTexto("descEscolaridade");
+        return obterTexto("descEscolaridade");
     }
 
     public String obterEsportesCadastro(){
-        return dsl.obterTexto("descEsportes");
+        return obterTexto("descEsportes");
     }
 
 }

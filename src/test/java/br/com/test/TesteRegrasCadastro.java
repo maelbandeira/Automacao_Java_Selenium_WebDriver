@@ -1,7 +1,7 @@
 package br.com.test;
 
+import br.com.core.BasePage;
 import br.com.core.BaseTest;
-import br.com.core.DSL;
 import br.com.page.CampoTreinamentoPO;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,7 +19,7 @@ import static br.com.core.DriverFactory.*;
 @RunWith(Parameterized.class)
 public class TesteRegrasCadastro extends BaseTest {
 
-    private DSL dsl;
+    private BasePage basePage;
     private CampoTreinamentoPO page;
 
     @Parameterized.Parameter
@@ -39,7 +39,7 @@ public class TesteRegrasCadastro extends BaseTest {
     @Before
     public void inicializa() {
         getDriver().get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
-        dsl = new DSL();
+        basePage = new BasePage();
         page = new CampoTreinamentoPO();
     }
 
@@ -70,7 +70,7 @@ public class TesteRegrasCadastro extends BaseTest {
         page.setEsporte(esportes);
         page.cadastrar();
         System.out.println(msg);
-        Assert.assertEquals(msg, dsl.alertaObterTextoEAceita());
+        Assert.assertEquals(msg, basePage.alertaObterTextoEAceita());
     }
 
 

@@ -1,6 +1,6 @@
 package br.com.test;
 
-import br.com.core.DSL;
+import br.com.core.BasePage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,41 +13,41 @@ public class TesteAlert {
 
     private WebDriver driver;
 
-    private DSL dsl;
+    private BasePage basePage;
 
     @Before
     public void inicializa(){
         getDriver().get("file:///C:/ambiente/workspaces/Automacao_Java_Selenium_WebDriver/src/test/resources/massas/componentes.html");
-        dsl = new DSL();
+        basePage = new BasePage();
     }
 
     @Test
     public void deveInteragirComAlertSimples(){
-        dsl.clicarBotao("alert");
-        String texto = dsl.alertaObterTextoEAceita();
+        basePage.clicarBotao("alert");
+        String texto = basePage.alertaObterTextoEAceita();
         Assert.assertEquals("Alert Simples", texto);
 
-        dsl.escrever("elementosForm:nome", texto);
+        basePage.escrever("elementosForm:nome", texto);
     }
 
     @Test
     public void deveInteragirComAlertConfirm(){
-        dsl.clicarBotao("confirm");
-        Assert.assertEquals("Confirm Simples", dsl.alertaObterTextoEAceita());
-        Assert.assertEquals("Confirmado", dsl.alertaObterTextoEAceita());
+        basePage.clicarBotao("confirm");
+        Assert.assertEquals("Confirm Simples", basePage.alertaObterTextoEAceita());
+        Assert.assertEquals("Confirmado", basePage.alertaObterTextoEAceita());
 
-        dsl.clicarBotao("confirm");
-        Assert.assertEquals("Confirm Simples", dsl.alertaObterTextoENega());
-        Assert.assertEquals("Negado", dsl.alertaObterTextoENega());
+        basePage.clicarBotao("confirm");
+        Assert.assertEquals("Confirm Simples", basePage.alertaObterTextoENega());
+        Assert.assertEquals("Negado", basePage.alertaObterTextoENega());
     }
 
     @Test
     public void deveInteragirComAlertPrompt(){
-        dsl.clicarBotao("prompt");
-        Assert.assertEquals("Digite um numero", dsl.alertaObterTexto());
-        dsl.alertaEscrever("18");
-        Assert.assertEquals("Era 18?", dsl.alertaObterTextoEAceita());
-        Assert.assertEquals(":D", dsl.alertaObterTextoEAceita());
+        basePage.clicarBotao("prompt");
+        Assert.assertEquals("Digite um numero", basePage.alertaObterTexto());
+        basePage.alertaEscrever("18");
+        Assert.assertEquals("Era 18?", basePage.alertaObterTextoEAceita());
+        Assert.assertEquals(":D", basePage.alertaObterTextoEAceita());
     }
 
     @After
